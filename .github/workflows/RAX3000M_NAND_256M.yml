@@ -1,4 +1,4 @@
-name: Build_rax3000m_256m_new
+name: RAX3000M_NAND_256M
 
 on:
   repository_dispatch:
