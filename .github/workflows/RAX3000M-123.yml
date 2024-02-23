@@ -1,4 +1,4 @@
-name: RAX3000M_NAND_256M
+name: RAX3000M-123
 
 on:
   repository_dispatch:
@@ -14,7 +14,7 @@ env:
   REPO_URL: https://github.com/zikura88/immortalwrt-mt798x
   REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: RAX3000M_256M_20240223.config
+  CONFIG_FILE: RAX3000M-123.config
   TZ: Asia/Shanghai
   DEVICE: rax3000m
   UPLOAD_OUTPUT: true
