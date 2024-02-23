@@ -90,7 +90,7 @@ jobs:
     - name: 修改 主机名称
       run: |
         cd openwrt
-        sed -i 's/WinWrt/HIWIFI-HC5962/g' package/base-files/files/bin/config_generate
+        sed -i 's/ImmortalWrt/RAX3000M/g' package/base-files/files/bin/config_generate
         neofetch
 
     - name: 下载依赖
