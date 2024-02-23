@@ -14,7 +14,7 @@ env:
   REPO_URL: https://github.com/zikura88/immortalwrt-mt798x
   REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: .config
+  CONFIG_FILE: rax3000m_256m_20240223.config
   TZ: Asia/Shanghai
   DEVICE: rax3000m
   UPLOAD_OUTPUT: true
@@ -79,7 +79,7 @@ jobs:
         echo "src-git OpenClash https://github.com/vernesong/OpenClash.git" >> ./feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-        cp -f $GITHUB_WORKSPACE/.config $GITHUB_WORKSPACE/openwrt/.config
+        cp -f $GITHUB_WORKSPACE/rax3000m_256m_20240223.config $GITHUB_WORKSPACE/openwrt/.config
       
     - name: 修改 Lan IP
       run: |
