@@ -1,4 +1,4 @@
-name: Build_rax3000m
+name: Build_rax3000m_256m_new
 
 on:
   repository_dispatch:
@@ -14,7 +14,7 @@ env:
   REPO_URL: https://github.com/zikura88/immortalwrt-mt798x
   REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: rax3000m_240219.config
+  CONFIG_FILE: RAX3000M_256M_20240223.config
   TZ: Asia/Shanghai
   DEVICE: rax3000m
   UPLOAD_OUTPUT: true
@@ -76,14 +76,15 @@ jobs:
         cd openwrt
         echo "src-git kenzo https://github.com/kenzok8/openwrt-packages" >> ./feeds.conf.default
         echo "src-git small https://github.com/kenzok8/small" >> ./feeds.conf.default
+        echo "src-git OpenClash https://github.com/vernesong/OpenClash.git" >> ./feeds.conf.default
         ./scripts/feeds update -a
         ./scripts/feeds install -a
-        cp -f $GITHUB_WORKSPACE/rax3000m_240219.config $GITHUB_WORKSPACE/openwrt/.config
+        cp -f $GITHUB_WORKSPACE/RAX3000M_256M_20240223.config $GITHUB_WORKSPACE/openwrt/.config
       
-    - name: 修改 Lan IP
+    - name: 修改 Lan IP(修改后面的IP）
       run: |
         cd openwrt
-        sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generate
+        sed -i 's/192.168.1.1/192.168.1.1/g' package/base-files/files/bin/config_generate
         neofetch
 
     - name: 下载依赖
