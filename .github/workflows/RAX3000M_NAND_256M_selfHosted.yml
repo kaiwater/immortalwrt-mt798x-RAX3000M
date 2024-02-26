@@ -72,7 +72,19 @@ jobs:
       working-directory: /mnt/workdir
       run: |
         df -hT $PWD
-        git clone $REPO_URL -b $REPO_BRANCH openwrt
+
+        # 检查openwrt目录是否存在且不为空
+        if [ -d "./openwrt" ] && [ "$(ls -A ./openwrt)" ]; then
+            # 如果目录存在且不为空，则切换到该目录并重置到远程仓库的最新状态
+            cd "./openwrt"
+            git fetch --all
+            git reset --hard origin/main  # 或者您的主分支名
+        else
+            # 如果目录不存在或为空，则克隆仓库
+            git clone $REPO_URL -b $REPO_BRANCH openwrt
+        fi
+
+        #git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /mnt/workdir/openwrt $GITHUB_WORKSPACE/openwrt
         
     - name: 配置 Feeds
