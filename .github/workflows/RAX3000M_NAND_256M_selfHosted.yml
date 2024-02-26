@@ -78,7 +78,8 @@ jobs:
             # 如果目录存在且不为空，则切换到该目录并重置到远程仓库的最新状态
             cd "./openwrt"
             git fetch --all
-            git reset --hard origin/main  # 或者您的主分支名
+            git reset --hard $REPO_BRANCH  # 或者您的主分支名
+            cd ..
         else
             # 如果目录不存在或为空，则克隆仓库
             git clone $REPO_URL -b $REPO_BRANCH openwrt
